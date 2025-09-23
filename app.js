@@ -4,15 +4,9 @@ const getComputerChoice = function(){
     let rdm = Math.floor(Math.random() * 3)
     return options[rdm]
 }
-let computerChoice = getComputerChoice()
 
 // A function that gets the user input
 const getHumanChoice = () => prompt('rock, paper, or scissors?').toLowerCase()
-let humanChoice = getHumanChoice()
-
-// Variables for keeping score
-let humanScore = 0
-let computerScore = 0
 
 /* 
     A function that plays one round of rock, paper, scissors to determine a winner.
@@ -21,7 +15,7 @@ let computerScore = 0
     paper beats rock
     scissors beat paper
 */
-let playRound = function(human,computer){
+function playRound(human,computer){
     if((human === 'rock' && computer === 'scissors') || (human === 'paper' && computer === 'rock')){
         return 'human'
     } else if(human === 'scissors' && computer === 'paper'){
@@ -33,23 +27,36 @@ let playRound = function(human,computer){
     }
 }
 
-function playGame(round){
-    switch (round) {
-        case (round === 'human'):
-            humanScore +=1 
-            break;
-        case (round === 'computer'):
-            computerScore +=1 
-            break;
-        default:
-            "It's a tie."
-            break;
-    }
-    console.log(round)
+
+function playGame(n){
+
     let humanScore = 0
     let computerScore = 0
+    let tie = 0
+    let c = getComputerChoice()
+    let h = getHumanChoice()
+    let round = playRound(h,c)
+
+    if(n === 0){
+        console.log('Game Over')
+    } else {
+        if(round === 'human'){
+            humanScore += 1
+            console.log(`Human score: ${humanScore}`)
+        } else if(round === 'computer'){
+            computerScore += 1
+            console.log(`Comp score: ${computerScore}`)
+        } else {
+            tie += 1
+            console.log(`Tie score: ${tie}`)
+        }
+        playGame(n-1)
+        console.log(`Rounds: ${n}`)
+    }
 }
 
+playGame(4)
 
-playGame(playRound(humanChoice,computerChoice));
+
+
 
