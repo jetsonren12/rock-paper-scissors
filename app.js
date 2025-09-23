@@ -1,3 +1,16 @@
+let rock = document.querySelector('#rock')
+let paper = document.querySelector('#paper')
+let scissors = document.querySelector('#scissors')
+
+let options = [rock,paper,scissors]
+
+options.forEach(o => {
+    o.addEventListener('click', (e) => {
+    getHumanChoice(e)
+    })
+})
+
+
 // A function that randomly selects rock, paper, or scissors
 const getComputerChoice = function(){
     let options = ['rock','paper','scissors']
@@ -6,7 +19,8 @@ const getComputerChoice = function(){
 }
 
 // A function that gets the user input
-const getHumanChoice = () => prompt('rock, paper, or scissors?').toLowerCase()
+const getHumanChoice = (e) => console.log(e.target.innerText.toLowerCase())
+
 
 /* 
     A function that plays one round of rock, paper, scissors to determine a winner.
@@ -28,7 +42,7 @@ function playRound(human,computer){
 }
 
 
-function playGame(n){
+function playGame(){
 
     let humanScore = 0
     let computerScore = 0
@@ -55,7 +69,9 @@ function playGame(n){
     }
 }
 
-playGame(4)
+
+
+
 
 
 
