@@ -7,13 +7,14 @@ let scissors = document.querySelector('#scissors')
 let hScore = document.querySelector('#human')
 let cScore = document.querySelector('#computer')
 let tScore = document.querySelector('#tie')
+let hChoice = document.createElement('p')
+let cChoice = document.createElement('p')
+hChoice.setAttribute('id', 'human-choice')
+cChoice.setAttribute('id','comp-choice')
 body.appendChild(gameOverContainer)
 
-console.log(body);
-
-
 let options = [rock,paper,scissors]
-let num_of_rounds = 4
+let n_of_rounds = 4
 let humanScore = 0
 let computerScore = 0
 let tie = 0
@@ -23,21 +24,17 @@ options.forEach(o => {
     let h = getHumanChoice(e)
     let c = getComputerChoice()
     let winner = playRound(h,c)
-    playGame(winner,num_of_rounds)
+    playGame(winner,n_of_rounds,e,c)
     num_of_rounds -= 1
     })
 })
 
-
-
-// A function that randomly selects rock, paper, or scissors
 const getComputerChoice = function(){
     let options = ['rock','paper','scissors']
     let rdm = Math.floor(Math.random() * 3)
     return options[rdm]
 }
 
-// A function that gets the user input
 const getHumanChoice = (e) => e.target.innerText.toLowerCase()
 
 
@@ -60,16 +57,41 @@ function playRound(human,computer){
     }
 }
 
+function rewardPoint(selection){
+    switch (selection) {
+        case 'human':
+            humanScore += 1
+            hScore.innerText = `Human Score: ${humanScore}`
+            break;
+        default: 
+            computerScore += 1
+            cScore.innerText = `Computer Score: ${computerScore}`
+            break;
+    } 
+}
 
-function playGame(round,n){
+function showWinner(e,c){
+    hChoice.innerText = `Your Choice: ${e.target.innerText.toLowerCase()}`
+    gameOverContainer.append(hChoice)
+    
+    cChoice.innerText = `Computer Choice: ${c}`
+    gameOverContainer.append(cChoice)
+}
+
+function playGame(round,n,e,c){    
+    
+    
     if(n === 0){
         gameOver()
     } else if(round === 'human'){
-       rewardPoint(round)
+        showWinner(e,c)
+        rewardPoint(round)
     } else if(round === 'computer'){
+        showWinner(e,c)
         rewardPoint(round)
     } else {
-        rewardPoint(round)
+        tie += 1
+        tScore.innerText = `Tie: ${tie}`
     }
 }
 
@@ -82,21 +104,6 @@ function gameOver(){
     gameOverContainer.append(gameOver)
 }
 
-function rewardPoint(selection){
-    switch (selection) {
-        case 'human':
-            humanScore += 1
-            hScore.innerText = `Human Score: ${humanScore}`
-            break;
-        case 'computer':
-            computerScore += 1
-            cScore.innerText = `Computer Score: ${computerScore}`
-        default:
-            tie += 1
-            tScore.innerText = `Tie: ${tie}`
-            break;
-    } 
-}
 
 
 
