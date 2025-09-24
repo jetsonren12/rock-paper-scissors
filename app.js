@@ -1,6 +1,8 @@
 let body = document.querySelector('body')
 let gameOverContainer = document.createElement('div')
 gameOverContainer.setAttribute('class', 'gameover-container')
+let answerContainer = document.createElement('div')
+answerContainer.setAttribute('class','answer-container')
 let rock = document.querySelector('#rock')
 let paper = document.querySelector('#paper')
 let scissors = document.querySelector('#scissors')
@@ -9,12 +11,13 @@ let cScore = document.querySelector('#computer')
 let tScore = document.querySelector('#tie')
 let hChoice = document.createElement('p')
 let cChoice = document.createElement('p')
-hChoice.setAttribute('id', 'human-choice')
+hChoice.setAttribute('id','human-choice')
 cChoice.setAttribute('id','comp-choice')
+body.appendChild(answerContainer)
 body.appendChild(gameOverContainer)
 
 let options = [rock,paper,scissors]
-let n_of_rounds = 4
+let n_of_rounds = 5
 let humanScore = 0
 let computerScore = 0
 let tie = 0
@@ -25,7 +28,7 @@ options.forEach(o => {
     let c = getComputerChoice()
     let winner = playRound(h,c)
     playGame(winner,n_of_rounds,e,c)
-    num_of_rounds -= 1
+    n_of_rounds -= 1
     })
 })
 
@@ -70,29 +73,31 @@ function rewardPoint(selection){
     } 
 }
 
-function showWinner(e,c){
-    hChoice.innerText = `Your Choice: ${e.target.innerText.toLowerCase()}`
-    gameOverContainer.append(hChoice)
+function showChoice(e,c){
+    hChoice.innerText = `Your choice: ${e.target.innerText.toLowerCase()}`
+    answerContainer.append(hChoice)
     
-    cChoice.innerText = `Computer Choice: ${c}`
-    gameOverContainer.append(cChoice)
+    cChoice.innerText = `Computer choice: ${c}`
+    answerContainer.append(cChoice)
 }
 
 function playGame(round,n,e,c){    
     
     
-    if(n === 0){
+    if(n === 0 ){
         gameOver()
     } else if(round === 'human'){
-        showWinner(e,c)
+        showChoice(e,c)
         rewardPoint(round)
     } else if(round === 'computer'){
-        showWinner(e,c)
+        showChoice(e,c)
         rewardPoint(round)
     } else {
+        showChoice(e,c)
         tie += 1
         tScore.innerText = `Tie: ${tie}`
     }
+    console.log(n)
 }
 
 function gameOver(){

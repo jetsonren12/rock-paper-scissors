@@ -5,7 +5,7 @@
 
 button {
     border: 1px solid #e5e7eb;
-    background-color: #807397; 
+    background-color: #38553a; 
     color: #e5e7eb;
     border-radius: 10px;
     padding: 10px;
@@ -17,23 +17,38 @@ button {
     padding-top: 50px;
 }
 
-.btn-container {
+#human-choice,
+#comp-choice {
+    color: #38553a;
+}
+
+.btn-container,
+.score-container,
+.gameover-container,
+.answer-container {
     display: flex;
     justify-content: center;
+}
+
+.btn-container {
     padding: 50px 0px;
     gap: 30px;
 }
 
-.answer-container {
-    display: flex;
-    justify-content: center;
+.score-container {
     gap: 30px;
     font-size: 20px;
 }
 
+.answer-container{
+    gap: 30px;
+    font-size: 20px;
+    padding-top: 20px;
+}
+
 .gameover-container {
-    display: flex;
-    justify-content: center;
     padding-top: 30px;
 }
+
+
 
