@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    color: #121312;
 }
 
 button {
@@ -22,32 +23,42 @@ button {
     color: #38553a;
 }
 
+#new-game {
+    border: 1px solid #e5e7eb;
+    background-color: #38553a; 
+    color: #e5e7eb;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 15px;
+}
+
+
 .btn-container,
 .score-container,
-.gameover-container,
-.answer-container {
+.answer-container,
+.gameover-container{
     display: flex;
     justify-content: center;
+    gap: 30px;
 }
 
 .btn-container {
     padding: 50px 0px;
-    gap: 30px;
 }
 
 .score-container {
-    gap: 30px;
     font-size: 20px;
 }
 
 .answer-container{
-    gap: 30px;
     font-size: 20px;
     padding-top: 20px;
 }
 
 .gameover-container {
     padding-top: 30px;
+    align-items: center;
+
 }
 
 

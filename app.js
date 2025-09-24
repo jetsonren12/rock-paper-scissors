@@ -82,8 +82,6 @@ function showChoice(e,c){
 }
 
 function playGame(round,n,e,c){    
-    
-    
     if(n === 0 ){
         gameOver()
     } else if(round === 'human'){
@@ -97,7 +95,6 @@ function playGame(round,n,e,c){
         tie += 1
         tScore.innerText = `Tie: ${tie}`
     }
-    console.log(n)
 }
 
 function gameOver(){
@@ -108,6 +105,9 @@ function gameOver(){
     gameOver.innerText = 'Game Over!'
     gameOverContainer.append(gameOver)
 }
+
+
+
 
 
 
