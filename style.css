@@ -12,7 +12,7 @@ button {
     font-size: 20px;
 }
 
-#hello {
+#hello, h2 {
     text-align: center;
     padding-top: 50px;
 }
@@ -20,7 +20,20 @@ button {
 .btn-container {
     display: flex;
     justify-content: center;
-    padding-top: 50px;
+    padding: 50px 0px;
     gap: 30px;
+}
+
+.answer-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 20px;
+}
+
+.gameover-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
 }
 
